@@ -275,9 +275,11 @@ export default function Auth0LockWidget({ domain, clientId }: Auth0LockProps) {
           container: "lock-container",
           autoclose: true,
           closable: false,
+          oidcConformant: true,
           auth: {
             redirectUrl: `${window.location.origin}/api/auth/callback`,
             responseType: "code",
+            sso: false,
             params: {
               scope: "openid profile email",
             },
@@ -292,7 +294,7 @@ export default function Auth0LockWidget({ domain, clientId }: Auth0LockProps) {
           },
           allowSignUp: true,
           allowShowPassword: true,
-          rememberLastLogin: true,
+          rememberLastLogin: false,
         };
 
         lockRef.current = new window.Auth0Lock(clientId, domain, lockOptions);

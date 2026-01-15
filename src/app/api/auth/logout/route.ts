@@ -10,7 +10,7 @@ export async function GET() {
 
   const logoutUrl = new URL(`https://${AUTH0_DOMAIN}/v2/logout`);
   logoutUrl.searchParams.set("client_id", AUTH0_CLIENT_ID || "");
-  logoutUrl.searchParams.set("returnTo", `${APP_BASE_URL}/auth`);
+  logoutUrl.searchParams.set("returnTo", APP_BASE_URL);
 
   return NextResponse.redirect(logoutUrl.toString());
 }
